@@ -82,4 +82,9 @@ func main() {
 		return
 	}
 	fmt.Printf("%s, %s!\n", *greeting, name)
+
+	// Hardcoded password
+	password = "password"
+	fmt.Printf("%s", password)
+
 }
