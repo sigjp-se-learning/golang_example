@@ -31,7 +31,7 @@ import (
 	"golang.org/x/example/hello/reverse"
 )
 
-# Suspicious characters in a regular expression https://codeql.github.com/codeql-query-help/go/go-suspicious-character-in-regex/
+// Suspicious characters in a regular expression https://codeql.github.com/codeql-query-help/go/go-suspicious-character-in-regex/
 func broken(hostNames []byte) string {
 	var hostRe = regexp.MustCompile("\bforbidden.host.org")
 	if hostRe.Match(hostNames) {
