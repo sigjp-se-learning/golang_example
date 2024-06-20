@@ -26,9 +26,22 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"regexp"
 
 	"golang.org/x/example/hello/reverse"
 )
+
+# Suspicious characters in a regular expression https://codeql.github.com/codeql-query-help/go/go-suspicious-character-in-regex/
+func broken(hostNames []byte) string {
+	var hostRe = regexp.MustCompile("\bforbidden.host.org")
+	if hostRe.Match(hostNames) {
+		return "Must not target forbidden.host.org"
+	} else {
+		// This will be reached even if hostNames is exactly "forbidden.host.org",
+		// because the literal backspace is not matched
+		return ""
+	}
+}
 
 func usage() {
 	fmt.Fprintf(os.Stderr, "usage: hello [options] [name]\n")
