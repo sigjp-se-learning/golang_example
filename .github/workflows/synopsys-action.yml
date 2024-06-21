@@ -44,3 +44,12 @@ jobs:
           polaris_application_name: ${{ secrets.POLARIS_APPLICATION_NAME }}
           polaris_project_name: "go"
           polaris_assessment_types: "SCA,SAST"
+
+          ### SARIF report generation and upload to GitHub Adavanced Security Tab: Uncomment below to enable
+          polaris_reports_sarif_create: true  
+          polaris_reports_sarif_file_path: '/Users/tmp/report.sarif.json' # File path (including file name) where SARIF report is created.
+          polaris_reports_sarif_severities: "CRITICAL,HIGH"
+          polaris_reports_sarif_groupSCAIssues: true 
+          polaris_reports_sarif_issue_types: 'SCA, SAST' 
+          polaris_upload_sarif_report: true 
+          github_token: ${{ secrets.GITHUB_TOKEN }} # Required when polaris_upload_sarif_report is set as true
